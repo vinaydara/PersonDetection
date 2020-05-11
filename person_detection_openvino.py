@@ -10,7 +10,6 @@ import datetime
 import cv2
 from azure.storage.blob import BlockBlobService
 from azure.storage.blob import ContentSettings
-from resources.tempimage import TempImage
 
 #Initialize variables - Azure storage details
 block_blob_service = BlockBlobService(account_name='vinaydarastorage', 
