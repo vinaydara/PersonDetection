@@ -22,7 +22,6 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--prototxt", required=True, help="path to Caffe 'deploy' prototxt file")
 ap.add_argument("-m", "--model", required=True, help="path to Caffe pre-trained model")
 ap.add_argument("-c", "--confidence", type=float, default=0.9, help="minimum probability to filter weak detections")
-ap.add_argument("-u", "--movidius", type=bool, default=0, help="boolean indicating if the Movidius should be used")
 args = vars(ap.parse_args())
 
 # initialize the list of class labels MobileNet SSD was trained to detect, 
@@ -84,9 +83,6 @@ while True:
 			if CLASSES[idx] == "person" and counter == 1:
 				# Upload the image to Azure Blob
 				print("Uploading image to Azure blob")
-				# write the image to temporary file
-				#t = TempImage()
-				#cv2.imwrite(t.path, frame)
 				cv2.imwrite("./persondetected.jpg", frame)
 				block_blob_service.create_blob_from_path('homepiuploads','persondetected.jpg','persondetected.jpg', 
 					content_settings=ContentSettings(content_type='image/jpeg'))
