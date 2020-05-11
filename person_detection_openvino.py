@@ -11,11 +11,11 @@ import cv2
 from azure.storage.blob import BlockBlobService
 from azure.storage.blob import ContentSettings
 
-#Initialize variables - Azure storage details
-block_blob_service = BlockBlobService(account_name='vinaydarastorage', 
-	account_key='8t+DH1skSm0tyj1aZPDTQvw2m3wg/3XdPDy7MIlY36NuT0BeFZ8FDzVEsTHwcXYxYeMyM/JUjWRyGW6egqBwmw==')
+#Initialize variables
 counter = 0
 lastUploaded = datetime.datetime.now()
+block_blob_service = BlockBlobService(account_name='vinaydarastorage', 
+	account_key='8t+DH1skSm0tyj1aZPDTQvw2m3wg/3XdPDy7MIlY36NuT0BeFZ8FDzVEsTHwcXYxYeMyM/JUjWRyGW6egqBwmw==')
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
