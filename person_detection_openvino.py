@@ -42,9 +42,9 @@ net.setPreferableTarget(cv2.dnn.DNN_TARGET_MYRIAD)
 # initialize the video stream, allow the cammera sensor to warmup, and initialize the FPS counter
 print("[INFO] starting video stream...")
 # to use Pi Camera
-vs = VideoStream(src=0).start()
+#vs = VideoStream(src=0).start()
 # to use USB Camera
-#vs = VideoStream(src=1).start()
+vs = VideoStream(src=1).start()
 time.sleep(2.0)
 fps = FPS().start()
 
