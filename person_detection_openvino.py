@@ -12,7 +12,6 @@ from azure.storage.blob import BlockBlobService
 from azure.storage.blob import ContentSettings
 
 #Initialize variables
-counter = 0
 lastUploaded = datetime.datetime.now()
 block_blob_service = BlockBlobService(account_name='vinaydarastorage', 
 	account_key='8t+DH1skSm0tyj1aZPDTQvw2m3wg/3XdPDy7MIlY36NuT0BeFZ8FDzVEsTHwcXYxYeMyM/JUjWRyGW6egqBwmw==')
@@ -76,18 +75,14 @@ while True:
 			cv2.rectangle(frame, (startX, startY), (endX, endY),COLORS[idx], 2)
 			y = startY - 15 if startY - 15 > 15 else startY + 15
 			cv2.putText(frame, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
-			# Upload the image to Azure blob in 1 min intervals
-			if (timestamp - lastUploaded).seconds >= 60:
-				counter = 1
-			#Upload the image to Azure blob only if a Person is detected
-			if CLASSES[idx] == "person" and counter == 1:
+			# Upload the image to Azure blob only if a Person is detected in 1 min intervals
+			if CLASSES[idx] == "person" and ((timestamp - lastUploaded).seconds >= 60):
 				# Upload the image to Azure Blob
 				print("Uploading image to Azure blob")
 				cv2.imwrite("./persondetected.jpg", frame)
 				block_blob_service.create_blob_from_path('homepiuploads','persondetected.jpg','persondetected.jpg', 
 					content_settings=ContentSettings(content_type='image/jpeg'))
 				lastUploaded = timestamp
-				counter = 0
 
 	# show the output frame
 	cv2.imshow("Frame", frame)
