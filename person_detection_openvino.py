@@ -13,8 +13,8 @@ from azure.storage.blob import ContentSettings
 
 #Initialize variables
 lastUploaded = datetime.datetime.now()
-block_blob_service = BlockBlobService(account_name='vinaydarastorage', 
-	account_key='8t+DH1skSm0tyj1aZPDTQvw2m3wg/3XdPDy7MIlY36NuT0BeFZ8FDzVEsTHwcXYxYeMyM/JUjWRyGW6egqBwmw==')
+block_blob_service = BlockBlobService(account_name='persondetectionstorage', 
+	account_key='sBUz7x9ep4LlYpKhHxWgofJz+TtrbG1mdPx9GYJgBcJsDzDWK2LMSsmcofeS0nhhBKsW9h3P2mz4cF5bMNgpgg==')
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -43,7 +43,7 @@ print("[INFO] starting video stream...")
 # to use Pi Camera
 #vs = VideoStream(src=0).start()
 # to use USB Camera
-vs = VideoStream(src=1).start()
+vs = VideoStream(src=0).start()
 time.sleep(2.0)
 fps = FPS().start()
 
@@ -80,7 +80,7 @@ while True:
 				# Upload the image to Azure Blob
 				print("Uploading image to Azure blob")
 				cv2.imwrite("./persondetected.jpg", frame)
-				block_blob_service.create_blob_from_path('homepiuploads','persondetected.jpg','persondetected.jpg', 
+				block_blob_service.create_blob_from_path('persondetection-container','persondetected.jpg','persondetected.jpg', 
 					content_settings=ContentSettings(content_type='image/jpeg'))
 				lastUploaded = timestamp
 
