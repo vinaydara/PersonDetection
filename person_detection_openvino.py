@@ -13,8 +13,7 @@ from azure.storage.blob import ContentSettings
 
 #Initialize variables
 lastUploaded = datetime.datetime.now()
-block_blob_service = BlockBlobService(account_name='persondetectionstorage', 
-	account_key='YOUR_KEY_VALUE')
+block_blob_service = BlockBlobService(account_name='persondetectionstorage',account_key = 'YOUR_KEY_VALUE')
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
