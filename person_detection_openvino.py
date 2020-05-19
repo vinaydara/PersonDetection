@@ -13,7 +13,7 @@ from azure.storage.blob import ContentSettings
 
 #Initialize variables
 lastUploaded = datetime.datetime.now()
-block_blob_service = BlockBlobService(account_name='persondetectionstorage',account_key = 'YOUR_KEY_VALUE')
+block_blob_service = BlockBlobService(account_name='persondetectionstorage',account_key = '6nKA/y1mBYGD3dfJU8dIoerI/xyg0RR1JMFH6w9YETo8yeueLEXuS6/td0Mkts9nv7v9ucnNyhYsSbraMHMpdw==')
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -42,7 +42,7 @@ print("[INFO] starting video stream...")
 # to use Pi Camera
 #vs = VideoStream(src=0).start()
 # to use USB Camera
-vs = VideoStream(src=1).start()
+vs = VideoStream(src=0).start()
 time.sleep(2.0)
 fps = FPS().start()
 
